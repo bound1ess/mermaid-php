@@ -34,10 +34,24 @@ class GraphSpec extends ObjectBehavior {
 
 	function it_returns_the_nodes_added(Node $node, Node $anotherNode)
 	{
+		$this->getNodes()->shouldReturn([]);		
+
 		$this->addNode($node);
 		$this->getNodes()->shouldReturn([$node]);
+
 		$this->addNode($anotherNode);
 		$this->getNodes()->shouldReturn([$node, $anotherNode]);
+	}
+
+	function it_returns_the_links_added(Link $link, Link $anotherLink)
+	{
+		$this->getLinks()->shouldReturn([]);
+
+		$this->addLink($link);
+		$this->getLinks()->shouldReturn([$link]);
+
+		$this->addLink($anotherLink);
+		$this->getLinks()->shouldReturn([$link, $anotherLink]);
 	}
 
 }

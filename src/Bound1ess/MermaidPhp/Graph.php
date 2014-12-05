@@ -33,6 +33,11 @@ class Graph {
 	protected $nodes = [];
 
 	/**
+	 * @var array
+	 */
+	protected $links = [];
+
+	/**
 	 * @param string|null $direction
 	 */
 	public function __construct($direction = null)
@@ -95,6 +100,15 @@ class Graph {
 	}
 
 	/**
+	 * @param Link $link
+	 * @return void
+	 */
+	public function addLink(Link $link)
+	{
+		$this->links[] = $link;
+	}
+
+	/**
 	 * @return string|null
      */ 
 	public function getDirection()
@@ -108,6 +122,14 @@ class Graph {
 	public function getNodes()
 	{
 		return $this->nodes;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getLinks()
+	{
+		return $this->links;
 	}
 
 }
