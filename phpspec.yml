@@ -1,0 +1,8 @@
+formatter.name: pretty
+
+suites:
+    bound1ess_mermaid_php_suite:
+        namespace: Bound1ess\MermaidPhp
+        spec_path: .
+        src_path: src
+        spec_prefix: specs
