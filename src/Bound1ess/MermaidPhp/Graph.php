@@ -28,6 +28,18 @@ class Graph {
 	protected $direction = null;
 
 	/**
+	 * @param string|null $direction
+	 */
+	public function __construct($direction = null)
+	{
+		# We only want to call setDirection() if the passed $direction is not equal to null.
+		if ( ! is_null($direction))
+		{
+			$this->setDirection($direction);
+		}
+	}
+
+	/**
 	 * @param string $direction
 	 * @return void
 	 */
