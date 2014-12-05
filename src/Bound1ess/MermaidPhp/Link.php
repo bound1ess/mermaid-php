@@ -21,7 +21,7 @@ class Link {
 	 * @param Node $node
 	 * @param Node $anotherNode
 	 */		
-	public function __construct($node, $anotherNode)
+	public function __construct(Node $node, Node $anotherNode)
 	{
 		$this->nodes[] = $node;
 		$this->nodes[] = $anotherNode;
