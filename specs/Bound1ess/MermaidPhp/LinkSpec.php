@@ -20,4 +20,11 @@ class LinkSpec extends ObjectBehavior {
 		$this->getNodes()->shouldReturn([$node, $anotherNode]);
 	}
 
+	function it_can_be_either_with_arrow_head_or_open()
+	{
+		$this->isOpen()->shouldReturn(true);
+		$this->isOpen(false);
+		$this->isOpen()->shouldReturn(false);
+	}
+	
 }
