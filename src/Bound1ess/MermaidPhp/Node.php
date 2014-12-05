@@ -64,6 +64,23 @@ class Node {
 		{
 			$style = static::SQUARE_EDGES;
 		}
+		else
+		{
+			# We need to verify that the passed $style is valid.
+			# In order to do that we need a list of all valid styles, right?
+			$styles = [
+				static::SQUARE_EDGES,
+				static::ROUND_EDGES,
+				static::CIRCLE,
+				static::ASYMETRIC_SHAPE,
+				static::RHOMBUS,
+			];
+			
+			if ( ! in_array($style, $styles))
+			{
+				throw new Exceptions\InvalidStyleException($style);
+			}	
+		}
 
 		$this->style = $style;
 	}

@@ -76,7 +76,7 @@ class Graph {
 			throw new Exceptions\InvalidDirectionException($direction);
 		}
 
-		# Transformation is successfully completed and now we got valid direction.
+		# Transformation is successfully completed and now we got a valid direction.
 		$this->direction = $directions[$direction];
 	}
 

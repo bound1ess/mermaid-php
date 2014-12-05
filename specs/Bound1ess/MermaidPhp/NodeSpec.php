@@ -29,6 +29,9 @@ class NodeSpec extends ObjectBehavior {
 		$this->setText('another node text', Node::CIRCLE);
 		$this->getText()->shouldReturn('another node text');
 		$this->getStyle()->shouldReturn(Node::CIRCLE);
+
+		$this->shouldThrow('Bound1ess\MermaidPhp\Exceptions\InvalidStyleException')
+			 ->duringSetText('some node text', 'invalid style');
 	}
 
 }
