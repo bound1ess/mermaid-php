@@ -28,6 +28,11 @@ class Graph {
 	protected $direction = null;
 
 	/**
+	 * @var array
+	 */
+	protected $nodes = [];
+
+	/**
 	 * @param string|null $direction
 	 */
 	public function __construct($direction = null)
@@ -81,11 +86,28 @@ class Graph {
 	}
 
 	/**
+	 * @param Node $node
+	 * @return void
+	 */
+	public function addNode(Node $node)
+	{
+		$this->nodes[] = $node;
+	}
+
+	/**
 	 * @return string|null
      */ 
 	public function getDirection()
 	{
 		return $this->direction;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getNodes()
+	{
+		return $this->nodes;
 	}
 
 }

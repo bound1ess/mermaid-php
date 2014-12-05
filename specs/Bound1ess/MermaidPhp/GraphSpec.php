@@ -2,6 +2,8 @@
 
 use PhpSpec\ObjectBehavior;
 use Bound1ess\MermaidPhp\Graph;
+use Bound1ess\MermaidPhp\Node;
+use Bound1ess\MermaidPhp\Link;
 
 class GraphSpec extends ObjectBehavior {
 
@@ -28,6 +30,14 @@ class GraphSpec extends ObjectBehavior {
 
 		$this->shouldThrow('Bound1ess\MermaidPhp\Exceptions\InvalidDirectionException')
 			 ->duringSetDirection('something completely invalid');
+	}
+
+	function it_returns_the_nodes_added(Node $node, Node $anotherNode)
+	{
+		$this->addNode($node);
+		$this->getNodes()->shouldReturn([$node]);
+		$this->addNode($anotherNode);
+		$this->getNodes()->shouldReturn([$node, $anotherNode]);
 	}
 
 }
