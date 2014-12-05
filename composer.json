@@ -1,0 +1,19 @@
+{
+    "name": "bound1ess/mermaid-php",
+    "description": "PHP adapter for the mermaid project by @knsv (github.com/knsv/mermaid).",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "bound1ess",
+            "email": "bound1ess.dev@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "phpspec/phpspec": "~2.0"
+    },
+	"autoload": {
+		"psr-4": {
+			"Bound1ess\\MermaidPhp\\": "src/Bound1ess/MermaidPhp"
+		}
+	}
+}
