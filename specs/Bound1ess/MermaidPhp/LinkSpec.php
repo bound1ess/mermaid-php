@@ -26,5 +26,12 @@ class LinkSpec extends ObjectBehavior {
 		$this->isOpen(false);
 		$this->isOpen()->shouldReturn(false);
 	}
+
+	function it_supports_text_on_links()
+	{
+		$this->getText()->shouldReturn(null);
+		$this->setText('link text');
+		$this->getText()->shouldReturn('link text');
+	}
 	
 }

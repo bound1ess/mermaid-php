@@ -13,6 +13,11 @@ class Link {
 	protected $isOpen = true;
 
 	/**
+	 * @var string|null
+	 */
+	protected $text = null;
+
+	/**
 	 * @param Node $node
 	 * @param Node $anotherNode
 	 */		
@@ -41,11 +46,27 @@ class Link {
 	}
 
 	/**
+	 * @param string $text
+	 */
+	public function setText($text)
+	{
+		$this->text = $text;
+	}
+
+	/**
 	 * @return array
 	 */
 	public function getNodes()
 	{
 		return $this->nodes;
+	}
+
+	/**
+	 * @return string|null
+	 */
+	public function getText()
+	{
+		return $this->text;
 	}
 
 }
