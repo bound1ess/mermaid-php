@@ -21,10 +21,10 @@ $graph->addNodes(
 );
 
 $graph->addLinks(
-	new Link($a, $b, 'Link text', false),
-	new Link($b, $c, null, false),
-	new Link($c, $d, 'One', false),
-	new Link($c, $e, 'Two', false)
+	new Link($a, $b, 'Link text'),
+	new Link($b, $c),
+	new Link($c, $d, 'One'),
+	new Link($c, $e, 'Two')
 );
 
 # ========================================================================

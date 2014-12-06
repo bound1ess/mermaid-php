@@ -22,9 +22,9 @@ class LinkSpec extends ObjectBehavior {
 
 	function it_can_be_either_with_arrow_head_or_open()
 	{
-		$this->isOpen()->shouldReturn(true);
-		$this->isOpen(false);
 		$this->isOpen()->shouldReturn(false);
+		$this->isOpen(true);
+		$this->isOpen()->shouldReturn(true);
 	}
 
 	function it_supports_text_on_links()

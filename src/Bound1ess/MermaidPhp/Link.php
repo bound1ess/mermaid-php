@@ -23,7 +23,7 @@ class Link {
 	 * @param string|null $text
 	 * @param boolean $isOpen
 	 */		
-	public function __construct(Node $node, Node $anotherNode, $text = null, $isOpen = true)
+	public function __construct(Node $node, Node $anotherNode, $text = null, $isOpen = false)
 	{
 		$this->nodes[] = $node;
 		$this->nodes[] = $anotherNode;
