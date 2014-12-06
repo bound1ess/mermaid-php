@@ -75,7 +75,8 @@ class Node {
 				static::ASYMETRIC_SHAPE,
 				static::RHOMBUS,
 			];
-			
+
+			# Unfortunately, the passed $style is invalid.			
 			if ( ! in_array($style, $styles))
 			{
 				throw new Exceptions\InvalidStyleException($style);
