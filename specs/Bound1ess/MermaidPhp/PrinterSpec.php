@@ -7,6 +7,11 @@ use Bound1ess\MermaidPhp\Link;
 
 class PrinterSpec extends ObjectBehavior {
 
+	function let()
+	{
+		$this->beConstructedWith(true);
+	}
+
 	function it_is_initializable()
 	{
 		$this->shouldHaveType('Bound1ess\MermaidPhp\Printer');

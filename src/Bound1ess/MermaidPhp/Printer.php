@@ -3,6 +3,19 @@
 class Printer {
 
 	/**
+	 * @var boolean
+	 */
+	protected $testMode;
+
+	/**
+	 * @param boolean $testMode
+	 */
+	public function __construct($testMode = false)
+	{
+		$this->testMode = $testMode;
+	}
+
+	/**
 	 * @param Graph $graph
 	 * @param boolean $wrapInDiv
 	 * @return string
@@ -10,8 +23,8 @@ class Printer {
 	public function printGraph(Graph $graph, $wrapInDiv = false)
 	{
 		$graph = sprintf(
-			'graph %s;%s%s',
-			$graph->getDirection(),
+			'graph %s%s%s',
+			$this->renderDirection($graph->getDirection()),
 			$this->renderNodes($graph->getNodes()),
 			$this->renderLinks($graph->getLinks())
 		);
@@ -19,6 +32,15 @@ class Printer {
 		# By default, just plain graph will be returned.
 		return $wrapInDiv ? "<div class=\"mermaid\">{$graph}</div>" : $graph;
 	}		
+
+	/**
+	 * @param string $direction
+	 * @return string
+	 */
+	protected function renderDirection($direction)
+	{
+		return $direction.($this->testMode ? ';' : ';'.PHP_EOL);
+	}
 
 	/**
 	 * @param array $nodes
@@ -100,9 +122,13 @@ class Printer {
 		{
 			return '';
 		}
-		
-		# Otherwise, implode() them all and append a semi-colon to the end.
-		return implode(';', $elements).';';
+
+		# We do not append PHP_EOL when testing - it would make the resulting string
+		# too complicated to reproduce.
+		$glue = $this->testMode ? ';' : ';'.PHP_EOL;		
+
+		# Just implode() them all and append a semi-colon to the end.
+		return implode($glue, $elements).$glue;
 	}
 	
 }
