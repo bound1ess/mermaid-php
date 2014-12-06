@@ -9,12 +9,15 @@ class Printer {
 	 */
 	public function printGraph(Graph $graph, $wrapInDiv = false)
 	{
-		return sprintf(
+		$graph = sprintf(
 			'graph %s;%s%s',
 			$graph->getDirection(),
 			$this->renderNodes($graph->getNodes()),
 			$this->renderLinks($graph->getLinks())
 		);
+
+		# By default, just plain graph will be returned.
+		return $wrapInDiv ? "<div class=\"mermaid\">{$graph}</div>" : $graph;
 	}		
 
 	/**
@@ -23,14 +26,14 @@ class Printer {
 	 */
 	protected function renderNodes(array $nodes)
 	{
-		$result = '';
+		$result = [];
 
 		foreach ($nodes as $node)
 		{
-			$result .= $this->renderNode($node);
+			$result[] = $this->renderNode($node);
 		}
 
-		return $result ? "{$result};" : '';
+		return $this->concatenateElements($result);
 	}
 
 	/**
@@ -57,14 +60,14 @@ class Printer {
 	 */
 	protected function renderLinks(array $links)
 	{
-		$result = '';
+		$result = [];
 
 		foreach ($links as $link)
 		{
-			$result .= $this->renderLink($link);
+			$result[] = $this->renderLink($link);
 		}
 
-		return $result ? "{$result};" : '';	
+		return $this->concatenateElements($result);
 	}
 
 	/**
@@ -84,6 +87,22 @@ class Printer {
 		}
 
 		return "{$node->getId()}{$connection}{$anotherNode->getId()}";	
+	}
+
+	/**
+	 * @param array $elements
+	 * @return string
+	 */
+	protected function concatenateElements(array $elements)
+	{
+		# If no elements are present, just return an empty string.
+		if ( ! $elements)
+		{
+			return '';
+		}
+		
+		# Otherwise, implode() them all and append a semi-colon to the end.
+		return implode(';', $elements).';';
 	}
 	
 }

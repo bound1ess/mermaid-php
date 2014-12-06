@@ -36,9 +36,12 @@ class PrinterSpec extends ObjectBehavior {
 		$this->printGraph($graph)->shouldReturn('graph LR;node_id{Node text};');
 	}
 
-	function it_prints_a_link_between_two_nodes(Graph $graph, Link $link)
+	function it_prints_a_link(Graph $graph, Link $link, Node $node, Node $anotherNode)
 	{
-		$link->getNodes()->willReturn([new Node('first_node'), new Node('second_node')]);
+		$node->getId()->willReturn('first_node');
+		$anotherNode->getId()->willReturn('second_node');
+
+		$link->getNodes()->willReturn([$node, $anotherNode]);
 		$link->isOpen()->willReturn(true);
 		$link->getText()->willReturn(null);
 
@@ -54,6 +57,33 @@ class PrinterSpec extends ObjectBehavior {
 		$this->printGraph($graph)->shouldReturn(
 			'graph LR;first_node-->|Text on link|second_node;'
 		);
+	}
+
+	function it_prints_a_graph(Graph $graph, Link $link, Node $node, Node $anotherNode)
+	{
+		$graph->getDirection()->willReturn('LR');
+		
+		$node->getId()->willReturn('A');
+		$node->getText()->willReturn('First node');
+		$node->getStyle()->willReturn(Node::SQUARE_EDGES);
+
+		$anotherNode->getId()->willReturn('B');
+		$anotherNode->getText()->willReturn('Second node');
+		$anotherNode->getStyle()->willReturn(Node::ROUND_EDGES);
+
+		$graph->getNodes()->willReturn([$node, $anotherNode]);
+		
+		$link->getNodes()->willReturn([$node, $anotherNode]);
+		$link->isOpen()->willReturn(false);
+		$link->getText()->willReturn('Text on link');
+	
+		$graph->getLinks()->willReturn([$link]);
+
+		$this->printGraph($graph, true)->shouldReturn(
+			'<div class="mermaid">'.
+			'graph LR;A[First node];B(Second node);A-->|Text on link|B;'.
+			'</div>'
+		);	
 	}
 
 }
