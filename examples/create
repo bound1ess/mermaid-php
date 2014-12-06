@@ -12,13 +12,13 @@ use Bound1ess\MermaidPhp\Graph,
 
 $graph = new Graph('from left to right');
 
-$a = new Node('A'); $a->setText('Hard edge');
-$b = new Node('B'); $b->setText('Round edge', Node::ROUND_EDGES);
-$c = new Node('C'); $c->setText('Decision', Node::RHOMBUS);
-$d = new Node('D'); $d->setText('Result one');
-$e = new Node('E'); $e->setText('Result two');
-
-$graph->addNodes($a, $b, $c, $d, $e);
+$graph->addNodes(
+	new Node('A', ['Hard edge']),
+	new Node('B', ['Round edge', Node::ROUND_EDGES]),
+	new Node('C', ['Decision', Node::RHOMBUS]),
+	new Node('D', ['Result one']),
+	new Node('E', ['Result two'])
+);
 
 $aToB = new Link($a, $b); $aToB->isOpen(false); $aToB->setText('Link text');
 $bToC = new Link($b, $c); $bToC->isOpen(false);

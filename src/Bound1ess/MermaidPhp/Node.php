@@ -44,10 +44,17 @@ class Node {
 
 	/**
 	 * @param string $id
+	 * @param array|null $settings
 	 */
-	public function __construct($id)
+	public function __construct($id, $settings = null)
 	{
 		$this->id = $id;
+
+		# If some settings were passed, let's configure the node right away!
+		if ( ! is_null($settings))
+		{
+			call_user_func_array([$this, 'setText'], $settings);
+		}
 	}
 
 	/**
