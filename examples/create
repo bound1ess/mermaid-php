@@ -32,7 +32,7 @@ $graph->addLinks(
 $template = file_get_contents(__DIR__.'/template.html');
 
 file_put_contents(
-	$saveTo = __DIR__.'/../example.html',
+	$saveTo = getcwd().'/example.html',
 	str_replace('__GRAPH__', (new Printer)->printGraph($graph, true), $template)
 );
 

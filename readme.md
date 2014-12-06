@@ -11,7 +11,8 @@ Now (if you want to give it a try), lets review the installation process.
 ## Installation
 
 In order to install MermaidPhp, you need Composer.
-Run the following command in your project root directory.
+
+Run the following command in your project root directory:
 
 ```shell
 composer require bound1ess/mermaid-php:~1.0
@@ -22,7 +23,7 @@ and you are all set to go!
 
 ## Example of usage
 
-This PHP code
+This PHP code:
 
 ```php
 use Bound1ess\MermaidPhp\Graph,
@@ -55,14 +56,18 @@ Will produce something like this:
 
 If you want to see this example in your browser, do the following:
 
-- Run `mermaid_php_code_directory/examples/create` file, 
-it will produce `mermaid_php_code_directory/example.html` HTML file
-- Now set up development server with this command: `php -S localhost:8000`
-- View this file in your browser by visiting `localhost:8000/example.html`
+- Execute `vendor/bound1ess/php-mermaid/examples/create` file, 
+it will produce `example.html` file in your project root directory.
+- Now set up a PHP development server by running this command: `php -S localhost:8000`.
+- View the `example.html` file in your browser by visiting `localhost:8000/example.html`.
 
 ## API
 
 *[I have not finished this section just yet, but it is going to be posted soon, I promise]*
+
+## TODO
+
+- Add support for node/link styling and classes.
 
 ## License information
 
