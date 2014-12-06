@@ -100,6 +100,18 @@ class Graph {
 	}
 
 	/**
+	 * @param dynamic
+	 * @return void
+	 */
+	public function addNodes()
+	{
+		foreach (func_get_args() as $node)
+		{
+			$this->addNode($node);
+		}
+	}
+
+	/**
 	 * @param Link $link
 	 * @return void
 	 */
@@ -108,6 +120,18 @@ class Graph {
 		$this->links[] = $link;
 	}
 
+	/**
+	 * @param dynamic
+	 * @return void
+	 */
+	public function addLinks()
+	{
+		foreach (func_get_args() as $link)
+		{
+			$this->addLink($link);
+		}
+	}
+	
 	/**
 	 * @return string|null
      */ 

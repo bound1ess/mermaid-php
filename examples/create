@@ -18,21 +18,14 @@ $c = new Node('C'); $c->setText('Decision', Node::RHOMBUS);
 $d = new Node('D'); $d->setText('Result one');
 $e = new Node('E'); $e->setText('Result two');
 
-$graph->addNode($a);
-$graph->addNode($b);
-$graph->addNode($c);
-$graph->addNode($d);
-$graph->addNode($e);
+$graph->addNodes($a, $b, $c, $d, $e);
 
 $aToB = new Link($a, $b); $aToB->isOpen(false); $aToB->setText('Link text');
 $bToC = new Link($b, $c); $bToC->isOpen(false);
 $cToD = new Link($c, $d); $cToD->isOpen(false); $cToD->setText('One');
 $cToE = new Link($c, $e); $cToE->isOpen(false); $cToE->setText('Two');
 
-$graph->addLink($aToB);
-$graph->addLink($bToC);
-$graph->addLink($cToD);
-$graph->addLink($cToE);
+$graph->addLinks($aToB, $bToC, $cToD, $cToE);
 
 # ========================================================================
 

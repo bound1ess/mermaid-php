@@ -39,7 +39,7 @@ class GraphSpec extends ObjectBehavior {
 		$this->addNode($node);
 		$this->getNodes()->shouldReturn([$node]);
 
-		$this->addNode($anotherNode);
+		$this->addNodes($anotherNode);
 		$this->getNodes()->shouldReturn([$node, $anotherNode]);
 	}
 
@@ -50,7 +50,7 @@ class GraphSpec extends ObjectBehavior {
 		$this->addLink($link);
 		$this->getLinks()->shouldReturn([$link]);
 
-		$this->addLink($anotherLink);
+		$this->addLinks($anotherLink);
 		$this->getLinks()->shouldReturn([$link, $anotherLink]);
 	}
 
