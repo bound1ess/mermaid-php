@@ -10,21 +10,26 @@ class Link {
 	/**
 	 * @var boolean
 	 */
-	protected $isOpen = true;
+	protected $isOpen;
 
 	/**
 	 * @var string|null
 	 */
-	protected $text = null;
+	protected $text;
 
 	/**
 	 * @param Node $node
 	 * @param Node $anotherNode
+	 * @param string|null $text
+	 * @param boolean $isOpen
 	 */		
-	public function __construct(Node $node, Node $anotherNode)
+	public function __construct(Node $node, Node $anotherNode, $text = null, $isOpen = true)
 	{
 		$this->nodes[] = $node;
 		$this->nodes[] = $anotherNode;
+
+		$this->text = $text;
+		$this->isOpen = $isOpen;
 	}
 
 	/**

@@ -13,19 +13,19 @@ use Bound1ess\MermaidPhp\Graph,
 $graph = new Graph('from left to right');
 
 $graph->addNodes(
-	new Node('A', ['Hard edge']),
-	new Node('B', ['Round edge', Node::ROUND_EDGES]),
-	new Node('C', ['Decision', Node::RHOMBUS]),
-	new Node('D', ['Result one']),
-	new Node('E', ['Result two'])
+	$a = new Node('A', ['Hard edge']),
+	$b = new Node('B', ['Round edge', Node::ROUND_EDGES]),
+	$c = new Node('C', ['Decision', Node::RHOMBUS]),
+	$d = new Node('D', ['Result one']),
+	$e = new Node('E', ['Result two'])
 );
 
-$aToB = new Link($a, $b); $aToB->isOpen(false); $aToB->setText('Link text');
-$bToC = new Link($b, $c); $bToC->isOpen(false);
-$cToD = new Link($c, $d); $cToD->isOpen(false); $cToD->setText('One');
-$cToE = new Link($c, $e); $cToE->isOpen(false); $cToE->setText('Two');
-
-$graph->addLinks($aToB, $bToC, $cToD, $cToE);
+$graph->addLinks(
+	new Link($a, $b, 'Link text', false),
+	new Link($b, $c, null, false),
+	new Link($c, $d, 'One', false),
+	new Link($c, $e, 'Two', false)
+);
 
 # ========================================================================
 
