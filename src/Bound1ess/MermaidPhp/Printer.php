@@ -9,7 +9,7 @@ class Printer {
 	 */
 	public function printGraph(Graph $graph, $wrapInDiv = false)
 	{
-		# TODO: write needed logic.
+		return "graph {$graph->getDirection()};";
 	}		
 
 }
