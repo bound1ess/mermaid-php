@@ -10,7 +10,10 @@ class Printer {
 	public function printGraph(Graph $graph, $wrapInDiv = false)
 	{
 		return sprintf(
-			'graph %s;%s', $graph->getDirection(), $this->renderNodes($graph->getNodes())
+			'graph %s;%s%s',
+			$graph->getDirection(),
+			$this->renderNodes($graph->getNodes()),
+			$this->renderLinks($graph->getLinks())
 		);
 	}		
 
@@ -46,6 +49,41 @@ class Printer {
 		}
 
 		return $result;
+	}
+
+	/**
+	 * @param array $links
+	 * @return string
+	 */
+	protected function renderLinks(array $links)
+	{
+		$result = '';
+
+		foreach ($links as $link)
+		{
+			$result .= $this->renderLink($link);
+		}
+
+		return $result ? "{$result};" : '';	
+	}
+
+	/**
+	 * @param Link $link
+	 * @return string
+	 */
+	protected function renderLink(Link $link)
+	{
+		list ($node, $anotherNode) = $link->getNodes();
+
+		$connection = $link->isOpen() ? '---' : '-->';
+
+		# Remember that we might not always have a text to work with.
+		if ( ! is_null($link->getText()))
+		{
+			$connection .= "|{$link->getText()}|";
+		}
+
+		return "{$node->getId()}{$connection}{$anotherNode->getId()}";	
 	}
 	
 }
