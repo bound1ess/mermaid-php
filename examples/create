@@ -1,0 +1,44 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__.'/../vendor/autoload.php';
+
+use Bound1ess\MermaidPhp\Graph,
+	Bound1ess\MermaidPhp\Printer,
+	Bound1ess\MermaidPhp\Node,
+	Bound1ess\MermaidPhp\Link;
+
+# ========================================================================
+
+$graph = new Graph('from left to right');
+
+$a = new Node('A'); $a->setText('Hard edge');
+$b = new Node('B'); $b->setText('Round edge', Node::ROUND_EDGES);
+$c = new Node('C'); $c->setText('Decision', Node::RHOMBUS);
+$d = new Node('D'); $d->setText('Result one');
+$e = new Node('E'); $e->setText('Result two');
+
+$graph->addNode($a);
+$graph->addNode($b);
+$graph->addNode($c);
+$graph->addNode($d);
+$graph->addNode($e);
+
+$aToB = new Link($a, $b); $aToB->isOpen(false); $aToB->setText('Link text');
+$bToC = new Link($b, $c); $bToC->isOpen(false);
+$cToD = new Link($c, $d); $cToD->isOpen(false); $cToD->setText('One');
+$cToE = new Link($c, $e); $cToE->isOpen(false); $cToE->setText('Two');
+
+$graph->addLink($aToB);
+$graph->addLink($bToC);
+$graph->addLink($cToD);
+$graph->addLink($cToE);
+
+# ========================================================================
+
+$template = file_get_contents(__DIR__.'/template.html');
+
+file_put_contents(
+	__DIR__.'/../example.html',
+	str_replace('__GRAPH__', (new Printer)->printGraph($graph, true), $template)
+);
