@@ -70,11 +70,11 @@ class PrinterSpec extends ObjectBehavior {
 		
 		$node->getId()->willReturn('A');
 		$node->getText()->willReturn('First node');
-		$node->getStyle()->willReturn(Node::SQUARE_EDGES);
+		$node->getStyle()->willReturn(Node::SQUARE_EDGE);
 
 		$anotherNode->getId()->willReturn('B');
 		$anotherNode->getText()->willReturn('Second node');
-		$anotherNode->getStyle()->willReturn(Node::ROUND_EDGES);
+		$anotherNode->getStyle()->willReturn(Node::ROUND_EDGE);
 
 		$graph->getNodes()->willReturn([$node, $anotherNode]);
 		

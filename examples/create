@@ -14,7 +14,7 @@ $graph = new Graph('from left to right');
 
 $graph->addNodes(
 	$a = new Node('A', ['Hard edge']),
-	$b = new Node('B', ['Round edge', Node::ROUND_EDGES]),
+	$b = new Node('B', ['Round edge', Node::ROUND_EDGE]),
 	$c = new Node('C', ['Decision', Node::RHOMBUS]),
 	$d = new Node('D', ['Result one']),
 	$e = new Node('E', ['Result two'])
@@ -32,6 +32,8 @@ $graph->addLinks(
 $template = file_get_contents(__DIR__.'/template.html');
 
 file_put_contents(
-	__DIR__.'/../example.html',
+	$saveTo = __DIR__.'/../example.html',
 	str_replace('__GRAPH__', (new Printer)->printGraph($graph, true), $template)
 );
+
+echo "Example file has been successfully created and saved to {$saveTo}!", PHP_EOL;

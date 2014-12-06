@@ -5,12 +5,12 @@ class Node {
 	/**
 	 * @var string
 	 */
-	const SQUARE_EDGES = '[%s]';
+	const SQUARE_EDGE = '[%s]';
 
 	/**
 	 * @var string
 	 */
-	const ROUND_EDGES = '(%s)';
+	const ROUND_EDGE = '(%s)';
 
 	/**
 	 * @var string
@@ -66,18 +66,18 @@ class Node {
 	{
 		$this->text = $text;
 
-		# If the node style is not specified, we assume Node::SQUARE_EDGES.
+		# If the node style is not specified, we assume Node::SQUARE_EDGE.
 		if (is_null($style))
 		{
-			$style = static::SQUARE_EDGES;
+			$style = static::SQUARE_EDGE;
 		}
 		else
 		{
 			# We need to verify that the passed $style is valid.
 			# In order to do that we need a list of all valid styles, right?
 			$styles = [
-				static::SQUARE_EDGES,
-				static::ROUND_EDGES,
+				static::SQUARE_EDGE,
+				static::ROUND_EDGE,
 				static::CIRCLE,
 				static::ASYMETRIC_SHAPE,
 				static::RHOMBUS,

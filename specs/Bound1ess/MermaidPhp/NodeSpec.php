@@ -24,7 +24,7 @@ class NodeSpec extends ObjectBehavior {
 	{
 		$this->setText('node text');
 		$this->getText()->shouldReturn('node text');
-		$this->getStyle()->shouldReturn(Node::SQUARE_EDGES);
+		$this->getStyle()->shouldReturn(Node::SQUARE_EDGE);
 
 		$this->setText('another node text', Node::CIRCLE);
 		$this->getText()->shouldReturn('another node text');
