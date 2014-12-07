@@ -63,6 +63,15 @@ it will produce `example.html` file in your project root directory.
 
 ## API
 
+- `Bound1ess\MermaidPhp\Printer`
+	- `__construct($testMode = false)`
+		- `$testMode`: when set to `true`, `Printer` will produce code that is invalid,
+		but much easier to test. 
+	- `printGraph(Graph $graph, $wrapInDiv = false)`
+		- `$graph`: an instance of `Bound1ess\MermaidPhp\Graph` is expected.
+		- `$wrapInDiv`: when set to `true`, the code produced will be wrapped in a
+		`<div>` element with the class `mermaid`.
+
 *[I have not finished this section just yet, but it is going to be posted soon, I promise]*
 
 ## TODO
