@@ -71,8 +71,27 @@ it will produce `example.html` file in your project root directory.
 		- `$graph`: an instance of `Bound1ess\MermaidPhp\Graph` is expected.
 		- `$wrapInDiv`: when set to `true`, the code produced will be wrapped in a
 		`<div>` element with the class `mermaid`.
+		- *This method will return a string.*
 
-*[I have not finished this section just yet, but it is going to be posted soon, I promise]*
+- `Bound1ess\MermaidPhp\Graph`
+	- `__construct($direction = null)`
+		- `$direction`: if not `null`, `setDirection` method will be called.
+	- `setDirection($direction)`
+		- `$direction`: valid values are: `TB`, `BT`, `LR`, `RL`, `from top to bottom`,
+		`from bottom to top`, `from left to right`, `from right to left`.
+		- *This method will return nothing (void).*
+		- *This method can throw an instance of 
+		`Bound1ess\MermaidPhp\Exceptions\InvalidDirectionException`.*
+	- `addNode(Node $node)`
+		- `$node`: an instance of `Bound1ess\MermaidPhp\Node` is expected.
+		- *This method will return nothing (void).*
+	- `addNodes(Node $node, ...)`
+	- `addLink(Link $link)`
+		- `$link`: an instance of `Bound1ess\MermaidPhp\Link` is expected.
+		- *This method will return nothing (void).*
+	- `addLinks(Link $link, ...)`
+
+*Node and Link descriptions very soon*
 
 ## TODO
 
