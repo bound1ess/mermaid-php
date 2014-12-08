@@ -4,7 +4,7 @@ First, make yourself familiar with the brilliant
 [Mermaid project](https://github.com/knsv/mermaid).
 
 Basically, **MermaidPhp** provides you a nice and clean interface 
-to generate valid **Mermaid** code.
+to generate compatible with **Mermaid** code.
  
 Now (if you want to give it a try), lets review the installation process.
 
@@ -77,7 +77,8 @@ it will produce `example.html` file in your project root directory.
 	- `__construct($direction = null)`
 		- `$direction`: if not `null`, `setDirection` method will be called.
 	- `setDirection($direction)`
-		- `$direction`: valid values are: `TB`, `BT`, `LR`, `RL`, `from top to bottom`,
+		- `$direction`: valid values are `Node::TOP_BOTTOM`, `Node::BOTTOM_TOP`,
+		 `Node::LEFT_RIGHT`, `Node::RIGHT_LEFT`, `from top to bottom`,
 		`from bottom to top`, `from left to right`, `from right to left`.
 		- *This method will return nothing (void).*
 		- *This method can throw an instance of 
@@ -91,7 +92,31 @@ it will produce `example.html` file in your project root directory.
 		- *This method will return nothing (void).*
 	- `addLinks(Link $link, ...)`
 
-*Node and Link descriptions very soon*
+- `Bound1ess\MermaidPhp\Node`
+	- `__construct($id, array $settings = null)`
+		- `$id`: the node id *(should be a string)*.
+		- `$settings`: if not `null`, `setText` method will be called.
+	- `setText($text, $style = null)`
+		- `$text`: the node text *(should be a string)*. 
+		- `$style`: valid values are `Node::ROUND_EDGE`, `Node::SQUARE_EDGE`, `Node::CIRCLE`,
+		`Node::RHOMBUS`, `Node::ASYMETRIC_SHAPE`. If `null` is passed, `Node::SQUARE_EDGE`
+		will be used.
+		- *This method will return nothing (void).*
+ 
+- `Bound1ess\MermaidPhp\Link`
+	- `__construct(Node $node, Node $anotherNode, $text = null, $isOpen = false)`
+		- `$node`: an instance of `Bound1ess\MermaidPhp\Node` is expected.
+		- `$anotherNode`: an instance of `Bound1ess\MermaidPhp\Node` is expected.
+		- `$text`: the text on link *(should be a string or `null`)*.
+		- `$isOpen`: whether the link should be open or with arrow head
+		*(should be a boolean, the default value is `false`)*. 
+	- `setText($text)`
+		- `$text`: the text on link *(should be a string)*.
+		- *This method will return nothing (void).*
+	- `isOpen($newValue = null)`
+		- `$newValue`: if `null` is passed, this method will return the current value,
+		otherwise new value will be set *(should be a boolean value)*.
+		- *This method will return a boolean value or nothing (void).*
 
 ## TODO
 

@@ -46,7 +46,7 @@ class Node {
 	 * @param string $id
 	 * @param array|null $settings
 	 */
-	public function __construct($id, $settings = null)
+	public function __construct($id, array $settings = null)
 	{
 		$this->id = $id;
 
