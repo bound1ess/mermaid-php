@@ -1,6 +1,6 @@
 {
     "name": "bound1ess/mermaid-php",
-    "description": "PHP adapter for the mermaid project by @knsv (github.com/knsv/mermaid).",
+    "description": "PHP adapter for the Mermaid project by @knsv (github.com/knsv/mermaid).",
     "license": "MIT",
     "authors": [
         {
