@@ -101,6 +101,8 @@ it will produce `example.html` file in your project root directory.
 		- `$style`: valid values are `Node::ROUND_EDGE`, `Node::SQUARE_EDGE`, `Node::CIRCLE`,
 		`Node::RHOMBUS`, `Node::ASYMETRIC_SHAPE`. If `null` is passed, `Node::SQUARE_EDGE`
 		will be used.
+		- *This method can throw an instance of 
+		`Bound1ess\MermaidPhp\Exceptions\InvalidStyleException`.*
 		- *This method will return nothing (void).*
  
 - `Bound1ess\MermaidPhp\Link`
