@@ -122,7 +122,7 @@ it will produce `example.html` file in your project root directory.
 
 ## TODO
 
-- Add support for node/link styling and classes.
+- Add support for styling nodes (via classes/directly) [*working on it*].
 
 ## License information
 
