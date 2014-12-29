@@ -24,11 +24,13 @@ class NodeClass {
     /**
      * @param string $property
      * @param string $value
-     * @return void
+     * @return self
      */
     public function add($property, $value)
     {
         $this->properties[$property] = $value;
+    
+        return $this;
     }
 
     /**

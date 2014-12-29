@@ -1,5 +1,7 @@
 # MermaidPhp
 
+[![Build Status](https://travis-ci.org/bound1ess/mermaid-php.svg?branch=master)](https://travis-ci.org/bound1ess/mermaid-php)
+
 First, make yourself familiar with the brilliant 
 [Mermaid project](https://github.com/knsv/mermaid).
 
@@ -138,7 +140,7 @@ it will produce `example.html` file in your project root directory.
     - `add($property, $value)`
         - `$property`: the property name as a `string`.
         - `$value`: the property value as a `string`.
-        - *This method will return nothing (void).* 
+        - *This method will return the class instance itself.* 
 
 ## License information
 

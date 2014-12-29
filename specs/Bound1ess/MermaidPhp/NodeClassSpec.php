@@ -21,7 +21,7 @@ class NodeClassSpec extends ObjectBehavior {
 
     function it_returns_class_properties()
     {
-        $this->add('fill', '#ccf');
+        $this->add('fill', '#ccf')->shouldHaveType('Bound1ess\MermaidPhp\NodeClass');
         $this->callOnWrappedObject('__call', ['strokeWidth', ['20px']]);
 
         $this->getProperties()->shouldReturn([
