@@ -91,6 +91,12 @@ it will produce `example.html` file in your project root directory.
 		- `$link`: an instance of `Bound1ess\MermaidPhp\Link` is expected.
 		- *This method will return nothing (void).*
 	- `addLinks(Link $link, ...)`
+    - `addClass(NodeClass $class)`
+        - `$class`: an instance of `Bound1ess\MermaidPhp\NodeClass`.
+        - *This method will return nothing (void).*
+    - `addClasses`
+        - `dynamic`: as many `Bound1ess\MermaidPhp\NodeClass` instances as you need.
+        - *This method will return nothing (void).*
 
 - `Bound1ess\MermaidPhp\Node`
 	- `__construct($id, array $settings = null)`
@@ -104,6 +110,12 @@ it will produce `example.html` file in your project root directory.
 		- *This method can throw an instance of 
 		`Bound1ess\MermaidPhp\Exceptions\InvalidStyleException`.*
 		- *This method will return nothing (void).*
+    - `attachClass($name)`
+        - `$name`: the class name as a `string`.
+        - *This method will return nothing (void).*
+    - `attachClasses`
+        - `dynamic`: as many `string`s as you need.
+        - *This method will return nothing (void).*
  
 - `Bound1ess\MermaidPhp\Link`
 	- `__construct(Node $node, Node $anotherNode, $text = null, $isOpen = false)`
@@ -120,9 +132,13 @@ it will produce `example.html` file in your project root directory.
 		otherwise new value will be set *(should be a boolean value)*.
 		- *This method will return a boolean value or nothing (void).*
 
-## TODO
-
-- Add support for styling nodes (via classes/directly) [*working on it*].
+- `Bound1ess\MermaidPhp\NodeClass`
+    - `__construct($name)`
+        - `$name`: the class name as a `string`.
+    - `add($property, $value)`
+        - `$property`: the property name as a `string`.
+        - `$value`: the property value as a `string`.
+        - *This method will return nothing (void).* 
 
 ## License information
 
