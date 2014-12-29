@@ -23,10 +23,11 @@ class Printer {
 	public function printGraph(Graph $graph, $wrapInDiv = false)
 	{
 		$graph = sprintf(
-			'graph %s%s%s',
+			'graph %s%s%s%s',
 			$this->renderDirection($graph->getDirection()),
 			$this->renderNodes($graph->getNodes()),
-			$this->renderLinks($graph->getLinks())
+			$this->renderLinks($graph->getLinks()),
+            $this->renderClasses($graph->getClasses())
 		);
 
 		# By default, just plain graph will be returned.
@@ -110,6 +111,38 @@ class Printer {
 
 		return "{$node->getId()}{$connection}{$anotherNode->getId()}";	
 	}
+
+    /**
+     * @param array $classes
+     * @return string
+     */
+    protected function renderClasses(array $classes)
+    {
+        $result = [];
+
+        foreach ($classes as $class)
+        {
+            $result[] = $this->renderClass($class);
+        }
+
+        return $this->concatenateElements($result);
+    }
+
+    /**
+     * @param NodeClass $class
+     * @return string
+     */
+    protected function renderClass(NodeClass $class)
+    {
+        $properties = [];
+
+        foreach ($class->getProperties() as $key => $value)
+        {
+            $properties[] = "{$key}:{$value}";
+        }
+
+        return sprintf('classDef %s %s', $class->getName(), implode(',', $properties));
+    }
 
 	/**
 	 * @param array $elements

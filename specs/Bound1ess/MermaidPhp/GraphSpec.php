@@ -4,6 +4,7 @@ use PhpSpec\ObjectBehavior;
 use Bound1ess\MermaidPhp\Graph;
 use Bound1ess\MermaidPhp\Node;
 use Bound1ess\MermaidPhp\Link;
+use Bound1ess\MermaidPhp\NodeClass;
 
 class GraphSpec extends ObjectBehavior {
 
@@ -53,5 +54,16 @@ class GraphSpec extends ObjectBehavior {
 		$this->addLinks($anotherLink);
 		$this->getLinks()->shouldReturn([$link, $anotherLink]);
 	}
+
+    function it_returns_the_classes_added(NodeClass $class, NodeClass $anotherClass)
+    {
+        $this->getClasses()->shouldReturn([]);
+        
+        $this->addClass($class);
+        $this->getClasses()->shouldReturn([$class]);
+
+        $this->addClasses($anotherClass);
+        $this->getClasses()->shouldReturn([$class, $anotherClass]);
+    }
 
 }

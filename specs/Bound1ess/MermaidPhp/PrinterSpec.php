@@ -4,6 +4,7 @@ use PhpSpec\ObjectBehavior;
 use Bound1ess\MermaidPhp\Graph;
 use Bound1ess\MermaidPhp\Node;
 use Bound1ess\MermaidPhp\Link;
+use Bound1ess\MermaidPhp\NodeClass;
 
 class PrinterSpec extends ObjectBehavior {
 
@@ -22,6 +23,7 @@ class PrinterSpec extends ObjectBehavior {
 		$graph->getDirection()->willReturn('LR');
 		$graph->getNodes()->willReturn([]);
 		$graph->getLinks()->willReturn([]);
+        $graph->getClasses()->willReturn([]);
 
 		$this->printGraph($graph)->shouldReturn('graph LR;');
 	}
@@ -31,6 +33,7 @@ class PrinterSpec extends ObjectBehavior {
 		$graph->getDirection()->willReturn('LR');
 		$graph->getNodes()->willReturn([$node]);
 		$graph->getLinks()->willReturn([]);
+        $graph->getClasses()->willReturn([]);
 
 		$node->getId()->willReturn('node_id');
 		$node->getText()->willReturn(null);
@@ -53,6 +56,7 @@ class PrinterSpec extends ObjectBehavior {
 		$graph->getDirection()->willReturn('LR');
 		$graph->getNodes()->willReturn([]);
 		$graph->getLinks()->willReturn([$link]);
+        $graph->getClasses()->willReturn([]);
 
 		$this->printGraph($graph)->shouldReturn('graph LR;first_node---second_node;');
 
@@ -63,6 +67,28 @@ class PrinterSpec extends ObjectBehavior {
 			'graph LR;first_node-->|Text on link|second_node;'
 		);
 	}
+
+    function it_prints_a_class_definition_and_nodes_attached_to_it(
+        Graph $graph, Node $node, NodeClass $class
+    )
+    {
+        $graph->getDirection()->willReturn('LR');
+
+        $node->getId()->willReturn('A');
+        $node->getText()->willReturn('Node');
+        $node->getStyle()->willReturn(Node::SQUARE_EDGE);
+
+        $class->getName()->willReturn('someClass');
+        $class->getProperties()->willReturn(['fill' => '#ccf', 'stroke-width' => '2px']);
+
+        $graph->getNodes()->willReturn([$node]);
+        $graph->getLinks()->willReturn([]);
+        $graph->getClasses()->willReturn([$class]);
+
+        $this->printGraph($graph)->shouldReturn(
+            'graph LR;A[Node];classDef someClass fill:#ccf,stroke-width:2px;'
+        );
+    }
 
 	function it_prints_a_graph(Graph $graph, Link $link, Node $node, Node $anotherNode)
 	{
@@ -83,6 +109,7 @@ class PrinterSpec extends ObjectBehavior {
 		$link->getText()->willReturn('Text on link');
 	
 		$graph->getLinks()->willReturn([$link]);
+        $graph->getClasses()->willReturn([]); // TODO
 
 		$this->printGraph($graph, true)->shouldReturn(
 			'<div class="mermaid">'.

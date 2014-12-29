@@ -37,6 +37,11 @@ class Graph {
 	 */
 	protected $links = [];
 
+    /**
+     * @var array
+     */
+    protected $classes = [];
+
 	/**
 	 * @param string|null $direction
 	 */
@@ -131,6 +136,27 @@ class Graph {
 			$this->addLink($link);
 		}
 	}
+
+    /**
+     * @param NodeClass $class
+     * @return void
+     */
+    public function addClass(NodeClass $class)
+    {
+        $this->classes[] = $class;
+    }
+
+    /**
+     * @param dynamic
+     * @return void
+     */
+    public function addClasses()
+    {
+        foreach (func_get_args() as $class)
+        {
+            $this->addClass($class);
+        }
+    }
 	
 	/**
 	 * @return string|null
@@ -155,5 +181,13 @@ class Graph {
 	{
 		return $this->links;
 	}
+
+    /**
+     * @return array
+     */
+    public function getClasses()
+    {
+        return $this->classes;
+    }
 
 }
