@@ -42,6 +42,11 @@ class Node {
 	 */
 	protected $style = null;
 
+    /**
+     * @var array
+     */
+    protected $attachedClasses = [];
+
 	/**
 	 * @param string $id
 	 * @param array|null $settings
@@ -93,6 +98,27 @@ class Node {
 		$this->style = $style;
 	}
 
+    /**
+     * @param string $name
+     * @return void
+     */
+    public function attachClass($name)
+    {
+        $this->attachedClasses[] = $name; 
+    }
+
+    /**
+     * @param dynamic
+     * @return void
+     */
+    public function attachClasses()
+    {
+        foreach (func_get_args() as $class)
+        {
+            $this->attachClass($class);
+        }
+    }
+    
 	/**
 	 * @return string
 	 */
@@ -116,5 +142,13 @@ class Node {
 	{
 		return $this->style;
 	}
+
+    /**
+     * @return array
+     */
+    public function getAttachedClasses()
+    {
+        return $this->attachedClasses;
+    }
 
 }

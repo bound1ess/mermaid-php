@@ -7,6 +7,13 @@ class Printer {
 	 */
 	protected $testMode;
 
+    /**
+     * ClassName => [NodeId, ...]
+     * 
+     * @var array
+     */
+    protected $relations = [];
+
 	/**
 	 * @param boolean $testMode
 	 */
@@ -65,6 +72,8 @@ class Printer {
 	 */
 	protected function renderNode(Node $node)
 	{
+        $this->setRelations($node->getId(), $node->getAttachedClasses());
+
 		$result = $node->getId();
 	
 		# Remember that we might not always have a text to work with.	
@@ -125,7 +134,7 @@ class Printer {
             $result[] = $this->renderClass($class);
         }
 
-        return $this->concatenateElements($result);
+        return $this->concatenateElements($result).$this->renderRelations();
     }
 
     /**
@@ -163,5 +172,38 @@ class Printer {
 		# Just implode() them all and append a semi-colon to the end.
 		return implode($glue, $elements).$glue;
 	}
-	
+
+    /**
+     * @param string $nodeId
+     * @param array $attachedClasses
+     * @return void
+     */
+    protected function setRelations($nodeId, array $attachedClasses)
+    {
+        foreach ($attachedClasses as $class)
+        {
+            if ( ! isset ($this->relations[$class]))
+            {
+                $this->relations[$class] = [];
+            }
+
+            $this->relations[$class][] = $nodeId;
+        }
+    }
+
+    /**
+     * @return void
+     */
+    protected function renderRelations()
+    {
+        $result = [];
+
+        foreach ($this->relations as $className => $nodeIds)
+        {
+            $result[] = sprintf('class %s %s', implode(',', $nodeIds), $className);
+        } 
+    
+        return $this->concatenateElements($result);
+    }
+
 }

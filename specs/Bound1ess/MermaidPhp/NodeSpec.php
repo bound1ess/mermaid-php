@@ -34,4 +34,14 @@ class NodeSpec extends ObjectBehavior {
 			 ->duringSetText('some node text', 'invalid style');
 	}
 
+    function it_returns_the_attached_classes()
+    {
+        $this->attachClass('someClass');
+        $this->attachClasses('someOtherClass', 'anotherClass');
+        
+        $this->getAttachedClasses()->shouldReturn([
+            'someClass', 'someOtherClass', 'anotherClass'
+        ]);
+    }
+
 }

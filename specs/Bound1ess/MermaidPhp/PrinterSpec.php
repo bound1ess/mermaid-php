@@ -35,6 +35,7 @@ class PrinterSpec extends ObjectBehavior {
 		$graph->getLinks()->willReturn([]);
         $graph->getClasses()->willReturn([]);
 
+        $node->getAttachedClasses()->willReturn([]);
 		$node->getId()->willReturn('node_id');
 		$node->getText()->willReturn(null);
 		$this->printGraph($graph)->shouldReturn('graph LR;node_id;');
@@ -77,6 +78,7 @@ class PrinterSpec extends ObjectBehavior {
         $node->getId()->willReturn('A');
         $node->getText()->willReturn('Node');
         $node->getStyle()->willReturn(Node::SQUARE_EDGE);
+        $node->getAttachedClasses()->willReturn(['someClass']);
 
         $class->getName()->willReturn('someClass');
         $class->getProperties()->willReturn(['fill' => '#ccf', 'stroke-width' => '2px']);
@@ -87,6 +89,7 @@ class PrinterSpec extends ObjectBehavior {
 
         $this->printGraph($graph)->shouldReturn(
             'graph LR;A[Node];classDef someClass fill:#ccf,stroke-width:2px;'
+            .'class A someClass;'
         );
     }
 
@@ -97,10 +100,12 @@ class PrinterSpec extends ObjectBehavior {
 		$node->getId()->willReturn('A');
 		$node->getText()->willReturn('First node');
 		$node->getStyle()->willReturn(Node::SQUARE_EDGE);
+        $node->getAttachedClasses()->willReturn([]);
 
 		$anotherNode->getId()->willReturn('B');
 		$anotherNode->getText()->willReturn('Second node');
 		$anotherNode->getStyle()->willReturn(Node::ROUND_EDGE);
+        $anotherNode->getAttachedClasses()->willReturn([]);
 
 		$graph->getNodes()->willReturn([$node, $anotherNode]);
 		
@@ -109,7 +114,7 @@ class PrinterSpec extends ObjectBehavior {
 		$link->getText()->willReturn('Text on link');
 	
 		$graph->getLinks()->willReturn([$link]);
-        $graph->getClasses()->willReturn([]); // TODO
+        $graph->getClasses()->willReturn([]);
 
 		$this->printGraph($graph, true)->shouldReturn(
 			'<div class="mermaid">'.
