@@ -157,10 +157,10 @@ class Graph {
             $this->addClass($class);
         }
     }
-	
+
 	/**
 	 * @return string|null
-     */ 
+     */
 	public function getDirection()
 	{
 		return $this->direction;

@@ -16,7 +16,7 @@ class PrinterSpec extends ObjectBehavior {
 	function it_is_initializable()
 	{
 		$this->shouldHaveType('Bound1ess\MermaidPhp\Printer');
-	}			
+	}
 
 	function it_prints_the_direction_of_the_graph_layout(Graph $graph)
 	{
@@ -96,7 +96,7 @@ class PrinterSpec extends ObjectBehavior {
 	function it_prints_a_graph(Graph $graph, Link $link, Node $node, Node $anotherNode)
 	{
 		$graph->getDirection()->willReturn('LR');
-		
+
 		$node->getId()->willReturn('A');
 		$node->getText()->willReturn('First node');
 		$node->getStyle()->willReturn(Node::SQUARE_EDGE);
@@ -108,11 +108,11 @@ class PrinterSpec extends ObjectBehavior {
         $anotherNode->getAttachedClasses()->willReturn([]);
 
 		$graph->getNodes()->willReturn([$node, $anotherNode]);
-		
+
 		$link->getNodes()->willReturn([$node, $anotherNode]);
 		$link->isOpen()->willReturn(false);
 		$link->getText()->willReturn('Text on link');
-	
+
 		$graph->getLinks()->willReturn([$link]);
         $graph->getClasses()->willReturn([]);
 
@@ -120,7 +120,7 @@ class PrinterSpec extends ObjectBehavior {
 			'<div class="mermaid">'.
 			'graph LR;A[First node];B(Second node);A-->|Text on link|B;'.
 			'</div>'
-		);	
+		);
 	}
 
 }

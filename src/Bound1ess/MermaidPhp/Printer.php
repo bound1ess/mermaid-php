@@ -9,7 +9,7 @@ class Printer {
 
     /**
      * ClassName => [NodeId, ...]
-     * 
+     *
      * @var array
      */
     protected $relations = [];
@@ -39,7 +39,7 @@ class Printer {
 
 		# By default, just plain graph will be returned.
 		return $wrapInDiv ? "<div class=\"mermaid\">{$graph}</div>" : $graph;
-	}		
+    }
 
 	/**
 	 * @param string $direction
@@ -75,8 +75,8 @@ class Printer {
         $this->setRelations($node->getId(), $node->getAttachedClasses());
 
 		$result = $node->getId();
-	
-		# Remember that we might not always have a text to work with.	
+
+		# Remember that we might not always have a text to work with.
 		if ( ! is_null($node->getText()))
 		{
 			# The style variable already contains a nice template, making our life easier.
@@ -118,7 +118,7 @@ class Printer {
 			$connection .= "|{$link->getText()}|";
 		}
 
-		return "{$node->getId()}{$connection}{$anotherNode->getId()}";	
+		return "{$node->getId()}{$connection}{$anotherNode->getId()}";
 	}
 
     /**
@@ -167,7 +167,7 @@ class Printer {
 
 		# We do not append PHP_EOL when testing - it would make the resulting string
 		# too complicated to reproduce.
-		$glue = $this->testMode ? ';' : ';'.PHP_EOL;		
+		$glue = $this->testMode ? ';' : ';'.PHP_EOL;
 
 		# Just implode() them all and append a semi-colon to the end.
 		return implode($glue, $elements).$glue;
@@ -201,8 +201,8 @@ class Printer {
         foreach ($this->relations as $className => $nodeIds)
         {
             $result[] = sprintf('class %s %s', implode(',', $nodeIds), $className);
-        } 
-    
+        }
+
         return $this->concatenateElements($result);
     }
 

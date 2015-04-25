@@ -4,7 +4,7 @@ use PhpSpec\ObjectBehavior;
 use Bound1ess\MermaidPhp\Node;
 
 class NodeSpec extends ObjectBehavior {
-	
+
 	function let()
 	{
 		$this->beConstructedWith('node id');
@@ -19,7 +19,7 @@ class NodeSpec extends ObjectBehavior {
 	{
 		$this->getId()->shouldReturn('node id');
 	}
-	
+
 	function it_sets_the_node_text()
 	{
 		$this->setText('node text');
@@ -38,7 +38,7 @@ class NodeSpec extends ObjectBehavior {
     {
         $this->attachClass('someClass');
         $this->attachClasses('someOtherClass', 'anotherClass');
-        
+
         $this->getAttachedClasses()->shouldReturn([
             'someClass', 'someOtherClass', 'anotherClass'
         ]);

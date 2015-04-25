@@ -12,7 +12,7 @@ class NodeClassSpec extends ObjectBehavior {
     function it_is_initializable()
 	{
         $this->shouldHaveType('Bound1ess\MermaidPhp\NodeClass');
-    }			
+    }
 
     function it_returns_the_class_name()
     {

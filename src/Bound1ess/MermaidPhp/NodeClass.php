@@ -29,7 +29,7 @@ class NodeClass {
     public function add($property, $value)
     {
         $this->properties[$property] = $value;
-    
+
         return $this;
     }
 
@@ -56,7 +56,7 @@ class NodeClass {
      */
     public function __call($property, array $value)
     {
-        $this->add($this->transform($property), $value[0]);    
+        $this->add($this->transform($property), $value[0]);
     }
 
     /**

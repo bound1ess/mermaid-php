@@ -21,7 +21,7 @@ class Node {
 	 * @var string
 	 */
 	const ASYMETRIC_SHAPE = '>%s]';
-		
+
 	/**
 	 * @var string
 	 */
@@ -88,11 +88,11 @@ class Node {
 				static::RHOMBUS,
 			];
 
-			# Unfortunately, the passed $style is invalid.			
+			# Unfortunately, the passed $style is invalid.
 			if ( ! in_array($style, $styles))
 			{
 				throw new Exceptions\InvalidStyleException($style);
-			}	
+			}
 		}
 
 		$this->style = $style;
@@ -104,7 +104,7 @@ class Node {
      */
     public function attachClass($name)
     {
-        $this->attachedClasses[] = $name; 
+        $this->attachedClasses[] = $name;
     }
 
     /**
@@ -118,7 +118,7 @@ class Node {
             $this->attachClass($class);
         }
     }
-    
+
 	/**
 	 * @return string
 	 */

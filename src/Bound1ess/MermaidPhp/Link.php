@@ -6,7 +6,7 @@ class Link {
 	 * @var array
 	 */
 	protected $nodes = [];
-	
+
 	/**
 	 * @var boolean
 	 */
@@ -22,7 +22,7 @@ class Link {
 	 * @param Node $anotherNode
 	 * @param string|null $text
 	 * @param boolean $isOpen
-	 */		
+	 */
 	public function __construct(Node $node, Node $anotherNode, $text = null, $isOpen = false)
 	{
 		$this->nodes[] = $node;

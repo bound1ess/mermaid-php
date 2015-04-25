@@ -13,7 +13,7 @@ class LinkSpec extends ObjectBehavior {
 	function it_is_initializable()
 	{
 		$this->shouldHaveType('Bound1ess\MermaidPhp\Link');
-	}		
+	}
 
 	function it_returns_both_nodes(Node $node, Node $anotherNode)
 	{
@@ -33,5 +33,4 @@ class LinkSpec extends ObjectBehavior {
 		$this->setText('link text');
 		$this->getText()->shouldReturn('link text');
 	}
-	
 }

@@ -11,7 +11,7 @@ class GraphSpec extends ObjectBehavior {
 	function it_is_initializable()
 	{
 		$this->shouldHaveType('Bound1ess\MermaidPhp\Graph');
-	}		
+	}
 
 	function it_sets_the_direction_of_the_graph_layout()
 	{
@@ -19,13 +19,13 @@ class GraphSpec extends ObjectBehavior {
 
 		$this->setDirection(Graph::TOP_BOTTOM);
 		$this->getDirection()->shouldReturn('TB');
-	
+
 		$this->setDirection(Graph::LEFT_RIGHT);
 		$this->getDirection()->shouldReturn('LR');
 
 		$this->setDirection('from bottom to top');
 		$this->getDirection()->shouldReturn('BT');
-	
+
 		$this->setDirection('from right to left');
 		$this->getDirection()->shouldReturn('RL');
 
@@ -35,7 +35,7 @@ class GraphSpec extends ObjectBehavior {
 
 	function it_returns_the_nodes_added(Node $node, Node $anotherNode)
 	{
-		$this->getNodes()->shouldReturn([]);		
+		$this->getNodes()->shouldReturn([]);
 
 		$this->addNode($node);
 		$this->getNodes()->shouldReturn([$node]);
@@ -58,7 +58,7 @@ class GraphSpec extends ObjectBehavior {
     function it_returns_the_classes_added(NodeClass $class, NodeClass $anotherClass)
     {
         $this->getClasses()->shouldReturn([]);
-        
+
         $this->addClass($class);
         $this->getClasses()->shouldReturn([$class]);
 
